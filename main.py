@@ -39,6 +39,10 @@ def solve(headless: bool = True) -> list[Word]:
                 solution.append(spangram)
                 break
 
+        # let the user close on their own
+        if not headless:
+            input("Press enter to continue...")
+
     return solution
 
 
