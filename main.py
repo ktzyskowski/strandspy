@@ -9,6 +9,8 @@ from src.words import find_all_words, words_overlap
 
 
 def solve(headless: bool = True) -> list[Word]:
+    start = time.time()
+
     solution = []
 
     trie = Trie.from_file("res/words.txt", min_length=4)
@@ -39,6 +41,10 @@ def solve(headless: bool = True) -> list[Word]:
                 solution.append(spangram)
                 break
 
+        end = time.time()
+        elapsed_time = end - start
+        print(elapsed_time, "seconds")
+
         # let the user close on their own
         if not headless:
             input("Press enter to continue...")
@@ -52,12 +58,5 @@ def print_answer(words: list[Word]):
 
 
 if __name__ == "__main__":
-    start = time.time()
-
     answer = solve(headless=False)
-
-    end = time.time()
-    elapsed_time = end - start
-    print(elapsed_time, "seconds")
-
     print_answer(answer)
